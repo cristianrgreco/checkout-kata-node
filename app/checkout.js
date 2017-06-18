@@ -1,7 +1,10 @@
 import { Map } from 'immutable';
+import { default as preconditionsModule } from 'preconditions';
 import ItemManager from './item-manager';
 import DiscountManager from './discount-manager';
 import { calculateTotal } from './calculator';
+
+const preconditions = preconditionsModule.singleton();
 
 export default class Checkout {
   constructor() {
@@ -10,11 +13,15 @@ export default class Checkout {
   }
 
   discount(discount) {
+    preconditions.shouldBeDefined(discount);
+
     this.discountManager = this.discountManager.add(discount);
     return this; 
   }
 
   scan(item) {
+    preconditions.shouldBeDefined(item);
+
     this.itemManager = this.itemManager.add(item);
     return this;
   }

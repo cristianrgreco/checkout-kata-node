@@ -1,4 +1,7 @@
 import { Map, Set } from 'immutable';
+import { default as preconditionsModule } from 'preconditions';
+
+const preconditions = preconditionsModule.singleton();
 
 export default class ItemManager {
   constructor() {
@@ -7,12 +10,16 @@ export default class ItemManager {
   }
 
   add(item) {
+    preconditions.shouldBeDefined(item);
+
     this.items = this.items.add(item);
     this.quantities = this.quantities.set(item, this.getQuantity(item) + 1);
     return this; 
   }
 
   getQuantity(item) {
+    preconditions.shouldBeDefined(item);
+
     return this.quantities.get(item) || 0;
   }
 

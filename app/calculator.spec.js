@@ -9,7 +9,7 @@ const should = chai.should();
 
 describe('calculateTotal', () => {
 
-  it('should return 0.00 if there are no items', () => {
+  it('should return zero if there are no items', () => {
     const itemManager = new ItemManager();
     const discountManager = new DiscountManager();
 
