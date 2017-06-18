@@ -21,7 +21,7 @@ describe('ItemManager', () => {
     Immutable.is(expected, actual).should.be.true;
   });
 
-  it('should return the quantity of a given item', () => {
+  it('should return the quantity of an item', () => {
     const itemA = new Item('A', 2.00);
     const itemB = new Item('B', 2.50);
   
