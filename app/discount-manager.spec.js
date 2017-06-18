@@ -8,9 +8,9 @@ const should = chai.should();
 describe('DiscountManager', () => {
 
   it('should return the discount of a given item or null', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
-    const discountA = new Discount('A', 2, 3.00);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
+    const discountA = new Discount('A', 2, 300);
 
     const discountManager = new DiscountManager()
       .add(discountA);

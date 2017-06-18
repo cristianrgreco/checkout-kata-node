@@ -6,9 +6,9 @@ const should = chai.should();
 describe('Item', () => {
 
   it('should construct an Item', () => {
-    const item = new Item('A', 1.00);
+    const item = new Item('A', 100);
 
     item.sku.should.equal('A');
-    item.price.should.equal(1.00);
+    item.price.should.equal(100);
   });
 });

@@ -12,6 +12,7 @@ export default class ItemManager {
 
     this.items = this.items.add(item);
     this.quantities = this.quantities.set(item, this.getQuantity(item) + 1);
+
     return this; 
   }
 

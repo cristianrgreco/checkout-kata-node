@@ -10,8 +10,8 @@ const should = chai.should();
 describe('ItemManager', () => {
 
   it('should return all items', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
 
     const itemManager = new ItemManager()
      .add(itemA)
@@ -22,8 +22,8 @@ describe('ItemManager', () => {
   });
 
   it('should return the quantity of an item', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
   
     const itemManager = new ItemManager()
       .add(itemA)

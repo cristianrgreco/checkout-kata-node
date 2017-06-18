@@ -8,10 +8,10 @@ const should = chai.should();
 describe('Checkout', () => {
 
   it('should return the total of all items', () => {
-    const discountA = new Discount('A', 2, 3.00);
+    const discountA = new Discount('A', 2, 300);
 
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
 
     const checkout = new Checkout()
       .discount(discountA)
@@ -19,6 +19,6 @@ describe('Checkout', () => {
       .scan(itemA)
       .scan(itemB);
 
-    checkout.total().should.equal(5.50);
+    checkout.total().should.equal(550);
   });
 });

@@ -13,12 +13,12 @@ describe('calculateTotal', () => {
     const itemManager = new ItemManager();
     const discountManager = new DiscountManager();
 
-    calculateTotal(itemManager, discountManager).should.equal(0.00);
+    calculateTotal(itemManager, discountManager).should.equal(0);
   });
 
   it('should return the sum of the prices of all items', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
     const itemManager = new ItemManager()
       .add(itemA)
       .add(itemA)
@@ -26,37 +26,37 @@ describe('calculateTotal', () => {
 
     const discountManager = new DiscountManager();
 
-    calculateTotal(itemManager, discountManager).should.equal(6.50);
+    calculateTotal(itemManager, discountManager).should.equal(650);
   });
 
   it('should return the sum of the prices with discounts applied', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
     const itemManager = new ItemManager()
       .add(itemA)
       .add(itemA)
       .add(itemB);
 
-    const discountA = new Discount('A', 2, 3.00);
+    const discountA = new Discount('A', 2, 300);
     const discountManager = new DiscountManager()
       .add(discountA);
 
-    calculateTotal(itemManager, discountManager).should.equal(5.50);
+    calculateTotal(itemManager, discountManager).should.equal(550);
   });
 
   it('should return the sum of the prices with discounts applied with left-over items', () => {
-    const itemA = new Item('A', 2.00);
-    const itemB = new Item('B', 2.50);
+    const itemA = new Item('A', 200);
+    const itemB = new Item('B', 250);
     const itemManager = new ItemManager()
       .add(itemA)
       .add(itemA)
       .add(itemA)
       .add(itemB);
 
-    const discountA = new Discount('A', 2, 3.00);
+    const discountA = new Discount('A', 2, 300);
     const discountManager = new DiscountManager()
       .add(discountA);
 
-    calculateTotal(itemManager, discountManager).should.equal(7.50);
+    calculateTotal(itemManager, discountManager).should.equal(750);
   });
 });
