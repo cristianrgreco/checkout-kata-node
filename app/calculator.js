@@ -1,6 +1,4 @@
-import { default as preconditionsModule } from 'preconditions';
-
-const preconditions = preconditionsModule.singleton();
+import { preconditions } from './preconditions';
 
 export function calculateTotal(itemManager, discountManager) {
   preconditions
@@ -29,9 +27,10 @@ export function calculateTotal(itemManager, discountManager) {
   };
 
   return itemManager.getItems().reduce((total, item) => {
-    return itemHasDiscount(item) 
-      ? total += calculateDiscountPrice(item) 
-      : total += calculateRegularPrice(item);
+    if (itemHasDiscount(item)) {
+      return total += calculateDiscountPrice(item);
+    } else {
+      return total += calculateRegularPrice(item);
+    }
   }, 0);
 }
-

@@ -7,7 +7,7 @@ const should = chai.should();
 
 describe('ItemManager', () => {
 
-  it('should return all unique items', () => {
+  it('should return all items', () => {
     const itemA = new Item('A', 2.00);
     const itemB = new Item('B', 2.50);
 

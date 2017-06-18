@@ -1,10 +1,8 @@
 import { Map } from 'immutable';
-import { default as preconditionsModule } from 'preconditions';
 import ItemManager from './item-manager';
 import DiscountManager from './discount-manager';
+import { preconditions } from './preconditions';
 import { calculateTotal } from './calculator';
-
-const preconditions = preconditionsModule.singleton();
 
 export default class Checkout {
   constructor() {

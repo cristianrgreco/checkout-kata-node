@@ -1,6 +1,4 @@
-import { default as preconditionsModule } from 'preconditions';
-
-const preconditions = preconditionsModule.singleton();
+import { preconditions } from './preconditions';
 
 export default class Discount {
   constructor(sku, quantity, price) {

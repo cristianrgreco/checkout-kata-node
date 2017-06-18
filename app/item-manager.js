@@ -1,7 +1,5 @@
 import { Map, Set } from 'immutable';
-import { default as preconditionsModule } from 'preconditions';
-
-const preconditions = preconditionsModule.singleton();
+import { preconditions } from './preconditions';
 
 export default class ItemManager {
   constructor() {
