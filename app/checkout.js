@@ -14,7 +14,7 @@ export default class Checkout {
     preconditions.shouldBeDefined(discount);
 
     this.discountManager = this.discountManager.add(discount);
-    return this; 
+    return this;
   }
 
   scan(item) {

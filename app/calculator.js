@@ -13,7 +13,7 @@ export function calculateTotal(itemManager, discountManager) {
   };
 
   const calculateRegularPrice = item => {
-    return item.price * itemManager.getQuantity(item); 
+    return item.price * itemManager.getQuantity(item);
   };
 
   const calculateDiscountPrice = item => {

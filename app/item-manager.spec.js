@@ -24,7 +24,7 @@ describe('ItemManager', () => {
   it('should return the quantity of an item', () => {
     const itemA = new Item('A', 200);
     const itemB = new Item('B', 250);
-  
+
     const itemManager = new ItemManager()
       .add(itemA)
       .add(itemA);

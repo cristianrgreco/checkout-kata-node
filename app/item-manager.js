@@ -10,7 +10,7 @@ export default class ItemManager {
     preconditions.shouldBeDefined(item);
 
     this.quantities = this.quantities.set(item, this.getQuantity(item) + 1);
-    return this; 
+    return this;
   }
 
   getQuantity(item) {
