@@ -15,5 +15,8 @@
     "babel-register": "^6.24.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2"
+  },
+  "dependencies": {
+    "preconditions": "^2.2.0"
   }
 }
