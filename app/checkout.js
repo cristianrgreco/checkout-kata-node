@@ -20,19 +20,30 @@ export default class Checkout {
 
   total() {
     return this.itemManager.getItems().reduce((total, item) => {
-      const quantity = this.itemManager.getQuantity(item);
-      const discount = this.discountManager.getDiscount(item);
-
-      if (discount && quantity >= discount.quantity) {
-        const multiplier = Math.floor(quantity / discount.quantity);
-        total += discount.price * multiplier;
-        const remaining = quantity - (multiplier * discount.quantity);
-        total += item.price * remaining;
-      } else {
-        total += item.price * quantity;
-      }
-
-      return total;
+      return this.itemHasDiscount(item)
+        ? total += this.calculateDiscountPrice(item)
+        : total += this.calculateRegularPrice(item);
     }, 0);
+  }
+
+  itemHasDiscount(item) {
+    const quantity = this.itemManager.getQuantity(item);
+    const discount = this.discountManager.getDiscount(item);
+
+    return discount && quantity >= discount.quantity;
+  }
+
+  calculateRegularPrice(item) {
+    return item.price * this.itemManager.getQuantity(item); 
+  }
+
+  calculateDiscountPrice(item) {
+    const quantity = this.itemManager.getQuantity(item);
+    const discount = this.discountManager.getDiscount(item);
+
+    const discountMultiplier = Math.floor(quantity / discount.quantity);
+    const remainingRegularItems = quantity - (discountMultiplier * discount.quantity);
+
+    return (discount.price * discountMultiplier) + (item.price * remainingRegularItems);
   }
 }
