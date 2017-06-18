@@ -1,8 +1,9 @@
 import { Map } from 'immutable';
+import ItemManager from './item-manager';
 
 export default class Checkout {
   constructor() {
-    this.items = Map();
+    this.itemManager = new ItemManager();
     this.discounts = Map();
   }
 
@@ -12,22 +13,22 @@ export default class Checkout {
   }
 
   scan(item) {
-    const quantity = this.items.get(item) || 0;
-    this.items = this.items.set(item, quantity + 1);
+    this.itemManager = this.itemManager.add(item);
     return this;
   }
 
   total() {
-    return this.items.reduce((total, quantity, item) => { 
-      const discount = this.discounts.get(item.sku);
+    return this.itemManager.getItems().reduce((total, item) => {
+      const itemQuantity = this.itemManager.getQuantity(item);
+      const itemDiscount = this.discounts.get(item.sku);
 
-      if (discount && quantity >= discount.quantity) {
-        const multiplier = Math.floor(quantity / discount.quantity);
-        total += discount.price * multiplier;
-        const remaining = quantity - (multiplier * discount.quantity);
+      if (itemDiscount && itemQuantity >= itemDiscount.quantity) {
+        const multiplier = Math.floor(itemQuantity / itemDiscount.quantity);
+        total += itemDiscount.price * multiplier;
+        const remaining = itemQuantity - (multiplier * itemDiscount.quantity);
         total += item.price * remaining;
       } else {
-        total += item.price * quantity;
+        total += item.price * itemQuantity;
       }
 
       return total;
