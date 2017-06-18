@@ -3,16 +3,13 @@ import { preconditions } from './preconditions';
 
 export default class ItemManager {
   constructor() {
-    this.items = Set();  
     this.quantities = Map();
   }
 
   add(item) {
     preconditions.shouldBeDefined(item);
 
-    this.items = this.items.add(item);
     this.quantities = this.quantities.set(item, this.getQuantity(item) + 1);
-
     return this; 
   }
 
@@ -23,6 +20,6 @@ export default class ItemManager {
   }
 
   getItems() {
-    return this.items;
+    return Set(this.quantities.keySeq());
   }
 }
