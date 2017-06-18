@@ -1,8 +1,10 @@
 import Immutable, { Set } from 'immutable';
 import chai from 'chai';
+import chaiImmutable from 'chai-immutable';
 import Item from './item';
 import ItemManager from './item-manager';
 
+chai.use(chaiImmutable);
 const should = chai.should();
 
 describe('ItemManager', () => {
@@ -16,9 +18,7 @@ describe('ItemManager', () => {
      .add(itemA)
      .add(itemB);
 
-    const expected = Set.of(itemA, itemA, itemB);
-    const actual = itemManager.getItems();
-    Immutable.is(expected, actual).should.be.true;
+    itemManager.getItems().should.equal(Set.of(itemA, itemB));
   });
 
   it('should return the quantity of an item', () => {
