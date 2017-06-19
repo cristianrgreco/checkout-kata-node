@@ -1,4 +1,4 @@
-import { Map, Set } from 'immutable';
+import { Map } from 'immutable';
 import { preconditions } from './preconditions';
 
 export default class ItemManager {
@@ -20,6 +20,6 @@ export default class ItemManager {
   }
 
   getItems() {
-    return Set(this.quantities.keySeq());
+    return this.quantities.keySeq();
   }
 }

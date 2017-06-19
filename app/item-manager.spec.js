@@ -1,4 +1,4 @@
-import { Set } from 'immutable';
+import { Seq } from 'immutable';
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import Item from './item';
@@ -18,7 +18,7 @@ describe('ItemManager', () => {
      .add(itemA)
      .add(itemB);
 
-    itemManager.getItems().should.equal(Set.of(itemA, itemB));
+    itemManager.getItems().should.equal(Seq.of(itemA, itemB));
   });
 
   it('should return the quantity of an item', () => {
