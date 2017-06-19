@@ -28,9 +28,9 @@ export function calculateTotal(itemManager, discountManager) {
 
   return itemManager.getItems().reduce((total, item) => {
     if (itemHasDiscount(item)) {
-      return total += calculateDiscountPrice(item);
+      return total + calculateDiscountPrice(item);
     } else {
-      return total += calculateRegularPrice(item);
+      return total + calculateRegularPrice(item);
     }
   }, 0);
 }
