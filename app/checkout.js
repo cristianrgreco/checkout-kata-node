@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import ItemManager from './item-manager';
 import DiscountManager from './discount-manager';
 import { preconditions } from './preconditions';

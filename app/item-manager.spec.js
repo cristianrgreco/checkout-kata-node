@@ -1,4 +1,4 @@
-import Immutable, { Set } from 'immutable';
+import { Set } from 'immutable';
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import Item from './item';
