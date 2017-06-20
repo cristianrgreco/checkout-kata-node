@@ -1,9 +1,10 @@
-node {
+pipeline {
+  agent any
 
   def app
 
-  stage('Clone Repository') {
-    checkout scm
+  tools {
+      docker 'latest'
   }
 
   stage('Build Image') {
