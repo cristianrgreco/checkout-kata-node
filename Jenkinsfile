@@ -5,8 +5,7 @@ node {
   }
 
   stage('Test') {
-    nodejs(nodeJSInstallationName: latest) {
-      sh 'npm test'
-    }
+    sh 'node -v'
+    sh 'npm test'
   }
 }
