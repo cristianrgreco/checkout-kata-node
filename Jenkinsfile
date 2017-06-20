@@ -1,7 +1,10 @@
 pipeline {
-    agent {
-        docker { image 'node:8.1.2' }
+    agent any
+
+    tools {
+        nodejs 'latest'
     }
+
     stages {
         stage('Test') {
             steps {
