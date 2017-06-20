@@ -1,11 +1,12 @@
-node('node') {
-
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Test') {
-    sh 'node -v'
-    sh 'npm test'
-  }
+pipeline {
+    agent {
+        docker { image 'node:8.1.2' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
