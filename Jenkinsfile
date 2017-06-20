@@ -1,14 +1,15 @@
-node {
+pipeline {
+  agent any
 
-  def app
+  stages {
+    stage('Checkout') {
+      checkout scm
+    }
 
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Test') {
-    nodejs(nodeJSInstallationName: latest) {
-      sh 'npm test'
+    stage('Test') {
+      nodejs(nodeJSInstallationName: latest) {
+        sh 'npm test'
+      }
     }
   }
 }
