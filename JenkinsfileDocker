@@ -1,26 +1,17 @@
 pipeline {
-  agent any
+    agent any
 
-  def app
-
-  tools {
-      docker 'latest'
-  }
-
-  stage('Build Image') {
-    app = docker.build('checkout-kata-node')
-  }
-
-  stage('Test Image') {
-    app.inside {
-      npm test
+    tools {
+        docker 'latest'
+        nodejs 'latest'
     }
-  }
 
-  stage('Push Image') {
-    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-      app.push('${env.BUILD_NUMBER}')
-      app.push('latest')
+    stages {
+        stage('Test') {
+            steps {
+                sh 'npm install'
+                sh 'npm test'
+            }
+        }
     }
-  }
 }
